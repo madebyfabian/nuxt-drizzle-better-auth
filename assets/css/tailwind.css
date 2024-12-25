@@ -73,12 +73,12 @@
 
 	h1,
 	.h1-like {
-		@apply text-4xl lg:text-5xl font-bold tracking-tighter mb-3 lg:mb-4;
+		@apply text-3xl font-bold tracking-tighter mb-3 lg:mb-4;
 	}
 
 	h2,
 	.h2-like {
-		@apply text-3xl font-bold tracking-tight mb-3;
+		@apply text-xl font-bold tracking-tight mb-3;
 	}
 }
 

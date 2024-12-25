@@ -15,7 +15,7 @@
 				<UInput v-model="state.password" type="password" />
 			</UFormField>
 
-			<UButton type="submit">Submit</UButton>
+			<UButton type="submit" :loading="pending">Submit</UButton>
 		</UForm>
 	</div>
 </template>
