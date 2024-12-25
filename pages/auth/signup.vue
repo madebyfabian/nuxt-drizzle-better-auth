@@ -27,9 +27,9 @@
 	const { signUp } = useAuthClient()
 
 	const schema = z.object({
-		name: z.string().min(2, 'Must be at least 2 characters'),
+		name: z.string().min(1),
 		email: z.string().email('Invalid email'),
-		password: z.string().min(8, 'Must be at least 8 characters'),
+		password: z.string(),
 	})
 
 	type Schema = z.output<typeof schema>

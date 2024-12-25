@@ -1,21 +1,11 @@
 <template>
 	<div>
-		<h1>Login</h1>
+		<h1>Forgot password</h1>
 
 		<UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
 			<UFormField label="Email" name="email">
 				<UInput v-model="state.email" />
 			</UFormField>
-
-			<UFormField label="Password" name="password">
-				<UInput v-model="state.password" type="password" />
-			</UFormField>
-
-			<div>
-				<UButton variant="link" to="/auth/forgot-password">
-					<span>Forgot password?</span>
-				</UButton>
-			</div>
 
 			<UButton type="submit">Submit</UButton>
 		</UForm>
@@ -23,8 +13,8 @@
 		<div class="mt-4">or</div>
 
 		<div class="flex mt-4">
-			<UButton to="/auth/login-magic-link" color="neutral" variant="outline">
-				Send magic link
+			<UButton to="/auth/login" color="neutral" variant="outline">
+				Login
 			</UButton>
 		</div>
 	</div>
@@ -34,28 +24,26 @@
 	import * as z from 'zod'
 	import type { FormSubmitEvent } from '#ui/types'
 
-	const { signIn } = useAuthClient()
+	const { forgetPassword } = useAuthClient()
 
 	const schema = z.object({
 		email: z.string().email('Invalid email'),
-		password: z.string(),
 	})
 
 	type Schema = z.output<typeof schema>
 
 	const state = reactive<Partial<Schema>>({
 		email: undefined,
-		password: undefined,
 	})
 
 	const pending = ref(false)
 
 	const toast = useToast()
 	async function onSubmit(event: FormSubmitEvent<Schema>) {
-		await signIn.email(
+		await forgetPassword(
 			{
 				email: event.data.email,
-				password: event.data.password,
+				redirectTo: '/auth/reset-password',
 			},
 			{
 				onRequest: () => {
@@ -65,7 +53,13 @@
 					pending.value = false
 				},
 				onSuccess: () => {
-					navigateTo('/app')
+					toast.add({
+						title: 'Success',
+						description:
+							'The password reset link has been sent! You can close this tab',
+						duration: 0,
+						color: 'success',
+					})
 				},
 				onError: errorContext => {
 					toast.add({
