@@ -1,8 +1,6 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
 
-@plugin '@tailwindcss/typography';
-
 @theme {
 	--font-family-sans: 'Inter', sans-serif;
 	--font-family-heading: 'Bricolage Grotesque', sans-serif;
