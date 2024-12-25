@@ -23,6 +23,7 @@ export const auth = betterAuth({
 	},
 	emailVerification: {
 		sendOnSignUp: true,
+		autoSignInAfterVerification: true,
 		sendVerificationEmail: async ({ user, url }) => {
 			await sendEmail({
 				to: user.email,
@@ -47,6 +48,21 @@ export const auth = betterAuth({
 						<p>Click the link below to verify your email change:</p>
 						<p><a href="${url}">${url}</a></p>
 						<p>If you didn't request this change, you can ignore this email.</p>
+					`,
+				})
+			},
+		},
+		deleteUser: {
+			enabled: true,
+			sendDeleteAccountVerification: async ({ user, url }) => {
+				await sendEmail({
+					to: user.email,
+					subject: 'Verify your account deletion',
+					html: `
+						<p>Hi ${user.name},</p>
+						<p>Click the link below to verify your account deletion:</p>
+						<p><a href="${url}">${url}</a></p>
+						<p>If you didn't request this deletion, you can ignore this email.</p>
 					`,
 				})
 			},
