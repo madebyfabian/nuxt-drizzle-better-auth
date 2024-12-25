@@ -7,18 +7,14 @@
 				<UInput v-model="state.email" />
 			</UFormField>
 
-			<UFormField label="Password" name="password">
-				<UInput v-model="state.password" type="password" />
-			</UFormField>
-
 			<UButton type="submit">Submit</UButton>
 		</UForm>
 
 		<div class="mt-4">or</div>
 
 		<div class="flex mt-4">
-			<UButton to="/auth/login-magic-link" color="neutral" variant="outline">
-				Send magic link
+			<UButton to="/auth/login" color="neutral" variant="outline">
+				Login with password
 			</UButton>
 		</div>
 	</div>
@@ -32,24 +28,22 @@
 
 	const schema = z.object({
 		email: z.string().email('Invalid email'),
-		password: z.string(),
 	})
 
 	type Schema = z.output<typeof schema>
 
 	const state = reactive<Partial<Schema>>({
 		email: undefined,
-		password: undefined,
 	})
 
 	const pending = ref(false)
 
 	const toast = useToast()
 	async function onSubmit(event: FormSubmitEvent<Schema>) {
-		await signIn.email(
+		await signIn.magicLink(
 			{
 				email: event.data.email,
-				password: event.data.password,
+				callbackURL: '/app',
 			},
 			{
 				onRequest: () => {
@@ -59,7 +53,12 @@
 					pending.value = false
 				},
 				onSuccess: () => {
-					navigateTo('/app')
+					toast.add({
+						title: 'Success',
+						description: 'The magic link has been sent! You can close this tab',
+						duration: 0,
+						color: 'success',
+					})
 				},
 				onError: errorContext => {
 					toast.add({

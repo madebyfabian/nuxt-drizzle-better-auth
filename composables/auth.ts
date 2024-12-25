@@ -1,7 +1,10 @@
 import { createAuthClient } from 'better-auth/vue'
+import { magicLinkClient } from 'better-auth/client/plugins'
 
 export const useAuthClient = () => {
-	return createAuthClient()
+	return createAuthClient({
+		plugins: [magicLinkClient()],
+	})
 }
 
 export const useAuthUser = async () => {

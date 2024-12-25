@@ -5,9 +5,13 @@
 
 		<div class="flex gap-2 mt-4">
 			<UButton to="/auth/signup">Create an account</UButton>
-			<UButton to="/auth/login" variant="outline">Login</UButton>
+			<UButton to="/auth/login" color="neutral" variant="outline">
+				Login
+			</UButton>
 		</div>
 
-		<UButton to="/app" variant="outline" class="mt-4">Go to app</UButton>
+		<UButton to="/app" color="neutral" variant="outline" class="mt-4">
+			Go to app
+		</UButton>
 	</div>
 </template>
