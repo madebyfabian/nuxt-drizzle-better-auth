@@ -6,15 +6,21 @@
 		"build": "nuxt build",
 		"start": "nuxt dev",
 		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare"
+		"postinstall": "nuxt prepare",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate"
 	},
 	"dependencies": {
 		"@nuxt/ui": "3.0.0-alpha.10",
+		"@paralleldrive/cuid2": "^2.2.2",
+		"drizzle-orm": "^0.38.2",
 		"nuxt": "^3.14.1592",
+		"postgres": "^3.4.5",
 		"vue": "latest",
 		"vue-router": "latest"
 	},
 	"devDependencies": {
-		"@tailwindcss/typography": "^0.5.15"
+		"@tailwindcss/typography": "^0.5.15",
+		"drizzle-kit": "^0.30.1"
 	}
 }
