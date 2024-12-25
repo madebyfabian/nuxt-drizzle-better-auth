@@ -5,6 +5,7 @@
 	"scripts": {
 		"build": "nuxt build",
 		"start": "nuxt dev",
+		"dev": "nuxt dev",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare",
 		"db:generate": "drizzle-kit generate",
