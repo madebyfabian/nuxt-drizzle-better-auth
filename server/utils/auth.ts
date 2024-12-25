@@ -35,6 +35,23 @@ export const auth = betterAuth({
 			})
 		},
 	},
+	user: {
+		changeEmail: {
+			enabled: true,
+			sendChangeEmailVerification: async ({ user, newEmail, url }) => {
+				await sendEmail({
+					to: newEmail,
+					subject: 'Verify your email change',
+					html: `
+						<p>Hi ${user.name},</p>
+						<p>Click the link below to verify your email change:</p>
+						<p><a href="${url}">${url}</a></p>
+						<p>If you didn't request this change, you can ignore this email.</p>
+					`,
+				})
+			},
+		},
+	},
 	plugins: [
 		magicLink({
 			disableSignUp: true,

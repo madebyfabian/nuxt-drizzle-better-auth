@@ -1,8 +1,8 @@
 <template>
 	<UApp>
 		<NuxtRouteAnnouncer />
-		<main class="py-12 container">
+		<NuxtLayout>
 			<NuxtPage />
-		</main>
+		</NuxtLayout>
 	</UApp>
 </template>
