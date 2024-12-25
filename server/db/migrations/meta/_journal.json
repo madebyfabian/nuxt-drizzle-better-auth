@@ -15,6 +15,13 @@
       "when": 1735117079567,
       "tag": "0001_sticky_monster_badoon",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1735129498446,
+      "tag": "0002_burly_mephisto",
+      "breakpoints": true
     }
   ]
 }

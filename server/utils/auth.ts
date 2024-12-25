@@ -1,6 +1,8 @@
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { magicLink } from 'better-auth/plugins'
+import { passkey } from 'better-auth/plugins/passkey'
+
 import { db } from './db'
 import { sendEmail } from './sendEmail'
 
@@ -82,6 +84,11 @@ export const auth = betterAuth({
 					`,
 				})
 			},
+		}),
+		passkey({
+			rpID: process.env.PASSKEY_RP_ID,
+			rpName: process.env.PASSKEY_RP_NAME,
+			origin: process.env.BETTER_AUTH_URL,
 		}),
 	],
 	database: drizzleAdapter(db, {

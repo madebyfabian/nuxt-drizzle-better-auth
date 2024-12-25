@@ -3,7 +3,7 @@
  * @see https://www.better-auth.com/docs/concepts/cli
  * The only thing modified was the cuid2 id by default.
  */
-import { pgTable, text, timestamp, boolean } from 'drizzle-orm/pg-core'
+import { pgTable, text, timestamp, boolean, integer } from 'drizzle-orm/pg-core'
 import { createId } from '@paralleldrive/cuid2'
 
 export const user = pgTable('user', {
@@ -54,4 +54,19 @@ export const verification = pgTable('verification', {
 	expiresAt: timestamp('expiresAt').notNull(),
 	createdAt: timestamp('createdAt'),
 	updatedAt: timestamp('updatedAt'),
+})
+
+export const passkey = pgTable('passkey', {
+	id: text('id').primaryKey().$defaultFn(createId),
+	name: text('name'),
+	publicKey: text('publicKey').notNull(),
+	userId: text('userId')
+		.notNull()
+		.references(() => user.id),
+	credentialID: text('credentialID').notNull(),
+	counter: integer('counter').notNull(),
+	deviceType: text('deviceType').notNull(),
+	backedUp: boolean('backedUp').notNull(),
+	transports: text('transports'),
+	createdAt: timestamp('createdAt'),
 })
