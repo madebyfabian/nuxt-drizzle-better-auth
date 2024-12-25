@@ -9,8 +9,12 @@
 		"postinstall": "nuxt prepare"
 	},
 	"dependencies": {
+		"@nuxt/ui": "3.0.0-alpha.10",
 		"nuxt": "^3.14.1592",
 		"vue": "latest",
 		"vue-router": "latest"
+	},
+	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.15"
 	}
 }
