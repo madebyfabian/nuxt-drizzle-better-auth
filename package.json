@@ -13,11 +13,13 @@
 	"dependencies": {
 		"@nuxt/ui": "3.0.0-alpha.10",
 		"@paralleldrive/cuid2": "^2.2.2",
+		"better-auth": "^1.1.3",
 		"drizzle-orm": "^0.38.2",
 		"nuxt": "^3.14.1592",
 		"postgres": "^3.4.5",
 		"vue": "latest",
-		"vue-router": "latest"
+		"vue-router": "latest",
+		"zod": "^3.24.1"
 	},
 	"devDependencies": {
 		"@tailwindcss/typography": "^0.5.15",
