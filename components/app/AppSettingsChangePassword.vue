@@ -1,6 +1,8 @@
 <template>
 	<UCard>
-		<h2>Change password</h2>
+		<template #header>
+			<h2 class="mb-0">Change password</h2>
+		</template>
 
 		<UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
 			<UFormField label="Current password" name="currentPassword">

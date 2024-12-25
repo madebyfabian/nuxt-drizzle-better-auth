@@ -1,6 +1,8 @@
 <template>
 	<UCard>
-		<h2>Change email</h2>
+		<template #header>
+			<h2 class="mb-0">Change email</h2>
+		</template>
 
 		<UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
 			<UFormField label="Existing email" name="existingEmail">
