@@ -2,6 +2,13 @@
 
 A very simple starter repo for Nuxt 3. Highly optionated to what I use in my projects.
 
+Check out my blog post about installing Drizzle with Nuxt:
+[https://madebyfabian.com/blog/how-to-install-drizzle-postgres-with-nuxt-3
+](https://madebyfabian.com/blog/how-to-install-drizzle-postgres-with-nuxt-3)
+
+And then installing Better-Auth step by step:
+[https://madebyfabian.com/blog/how-to-setup-better-auth-with-nuxt-3-and-drizzle](https://madebyfabian.com/blog/how-to-setup-better-auth-with-nuxt-3-and-drizzle)
+
 ## Features
 
 - [Nuxt 3](https://nuxt.com/):
